@@ -1,0 +1,64 @@
+// Tổng số lệnh muốn farm (buy và sell được tính là 1 lệnh)
+const stopTradeAmout = 100;
+let counter = 1;
+var _timer;
+// Delay giữa các thao tác
+let delayClick = 700;
+
+// Delay giữa lênh buy và sell
+let delayBySell = 2500;
+
+// Delay giữa lần Buy và Sell tiếp theo
+let delayATrade = 10000;
+const trading = async () => {
+   if (counter >= stopTradeAmout) {
+      console.log(`=====> XONG!!!! BẠN ĐÃ TRADE XONG SỐ LẦN QUY ĐỊNH <======`)
+      clearInterval(_timer);
+      return;
+   }
+   //BUY
+   document.getElementsByClassName('order-create-side')[0].getElementsByClassName("buy")[0].click()
+
+   var type = document.getElementsByClassName('order-create-types')[0];
+   type.children[1].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   let sider = document.getElementsByClassName('slider-step')[0];
+   sider.children[4].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   document.getElementsByClassName('el-button--buy')[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   let popup = document.getElementsByClassName('el-button el-button--main')[0];
+   if(popup){
+      popup.click();
+      await new Promise(resolve => setTimeout(resolve, delayBySell));
+   }
+
+   //SELL
+
+   document.getElementsByClassName('order-create-side')[0].getElementsByClassName("sell")[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   type.children[1].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   sider.children[4].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   document.getElementsByClassName('el-button--sell')[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   popup = document.getElementsByClassName('el-button el-button--main')[0];
+   if(popup){
+      popup.click();
+      await new Promise(resolve => setTimeout(resolve, delayBySell));
+   }
+   counter++;
+
+   console.log(`=====> Tổng lệnh mua và bán: ${counter} <======`)
+
+}
+
+_timer = setInterval(trading, delayATrade)
