@@ -1,5 +1,5 @@
 // Tổng số lệnh muốn farm (buy và sell được tính là 1 lệnh)
-const stopTradeAmout = 100;
+const stopTradeAmout = 125;
 let counter = 1;
 var _timer;
 // Delay giữa các thao tác
