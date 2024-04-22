@@ -1,0 +1,83 @@
+// Delay giữa các thao tác
+let delayClick = 800;
+
+// Delay giữa lênh buy và sell
+let delayBySell = 5000;
+var num = 0;
+var i =0;
+while (i < 125){
+
+
+
+
+   //BUY
+   document.getElementsByClassName('order-create-side')[0].getElementsByClassName("buy")[0].click()
+
+   var type = document.getElementsByClassName('order-create-types')[0];
+   type.children[1].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   let sider = document.getElementsByClassName('slider-step')[0];
+   sider.children[4].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   document.getElementsByClassName('el-button--buy')[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+let popup = document.getElementsByClassName('el-button el-button--main')[0];
+   if(popup){
+      popup.click();
+      await new Promise(resolve => setTimeout(resolve, delayBySell));
+   }
+
+   //SELL
+
+   document.getElementsByClassName('order-create-side')[0].getElementsByClassName("sell")[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   type.children[1].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   sider.children[4].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   document.getElementsByClassName('el-button--sell')[0].click()
+  await new Promise(resolve => setTimeout(resolve, delayClick));
+
+
+popup = document.getElementsByClassName('el-button el-button--main')[0];
+   if(popup){
+      popup.click();
+      await new Promise(resolve => setTimeout(resolve, delayBySell));
+   }
+
+
+
+
+ i = i + 1;
+   console.log("=====> Tổng lệnh mua và bán: " + i)
+}
+
+//SELL end
+
+   document.getElementsByClassName('order-create-side')[0].getElementsByClassName("sell")[0].click()
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   type.children[1].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   sider.children[4].click();
+   await new Promise(resolve => setTimeout(resolve, delayClick));
+
+   document.getElementsByClassName('el-button--sell')[0].click()
+  await new Promise(resolve => setTimeout(resolve, delayClick));
+
+
+popup = document.getElementsByClassName('el-button el-button--main')[0];
+   if(popup){
+      popup.click();
+      await new Promise(resolve => setTimeout(resolve, delayBySell));
+   }
+
+alert("Auto done" )
+
