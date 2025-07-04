@@ -1,4 +1,4 @@
-// Delay giữa các thao tác
+// Delay giữa các thao tác // Delay giữa các thao tác
 let delayClick = 600;
 
 // Delay giữa lênh buy và sell
